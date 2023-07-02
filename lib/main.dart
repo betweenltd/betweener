@@ -1,6 +1,5 @@
-import 'package:betweener/pages/home.dart';
-import 'package:betweener/services/connectivity_services.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:betweener/providers/connectivity_provider.dart';
+import 'package:betweener/views/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
