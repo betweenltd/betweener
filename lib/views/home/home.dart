@@ -1,20 +1,29 @@
 import 'package:betweener/providers/connectivity_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../services/ip_location_services.dart';
-import '../../services/users_services.dart';
+import '../../services/long_press_to_share.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  void initState() {
+    updatePosition(userId: 6);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    getPosition();
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Stack(alignment: Alignment.bottomCenter, children: [
         Column(
@@ -30,19 +39,16 @@ class MyHomePage extends StatelessWidget {
               },
               child: Text('get ip'),
             ),
+            TextButton(
+              onPressed: () {},
+              onLongPress: () {
+                longPressToShare(userId: 5);
+              },
+              child: Text('long Press to share'),
+            ),
           ],
         ),
       ]),
     );
-  }
-
-  void getPosition() async {
-    try {
-      determinePosition().then((position) {
-        updateUserLocation(position.longitude, position.latitude);
-      });
-    } catch (e) {
-      print('$e test');
-    }
   }
 }
