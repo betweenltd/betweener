@@ -4,6 +4,8 @@ import 'package:betweener/core/widgets/secondary_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../auth/login_view.dart';
+
 class OnBoardingView extends StatelessWidget {
   const OnBoardingView({super.key});
 
@@ -28,7 +30,9 @@ class OnBoardingView extends StatelessWidget {
             SecondaryButtonWidget(
               text: 'Get Started',
               width: double.infinity,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, LoginView.id);
+              },
             ),
             const Spacer()
           ],
