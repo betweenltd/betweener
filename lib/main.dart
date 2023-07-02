@@ -1,7 +1,9 @@
 import 'package:betweener/providers/connectivity_provider.dart';
-import 'package:betweener/views/home/home.dart';
+import 'package:betweener/views/onbording/onbording_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'core/util/constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,9 +23,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Betweener',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          useMaterial3: true,
+          colorSchemeSeed: kPrimaryColor,
         ),
-        home: const MyHomePage(title: 'Betweener'),
+        routes: {
+          '/': (context) => const OnBoardingView(),
+        },
       ),
     );
   }
