@@ -1,8 +1,8 @@
 import 'package:betweener/core/util/constants.dart';
 import 'package:http/http.dart' as http;
 
-void updateUserLocation(double long, double lat) async {
-  var url = Uri.parse('$updateUserLocationUrl/5');
+void updateUserLocation(int userId, double long, double lat) async {
+  var url = Uri.parse('$updateUserLocationUrl/$userId');
   var response = await http.put(
     url,
     body: {'long': '$long', 'lat': '$lat'},

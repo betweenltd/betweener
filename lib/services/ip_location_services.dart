@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:betweener/services/users_services.dart';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 
@@ -11,6 +12,16 @@ Future<String> getUserIp() async {
   // print(await http.read(Uri.https('example.com', 'foobar.txt')));
   String ip = 'test';
   return ip;
+}
+
+void updatePosition({required int userId}) async {
+  try {
+    determinePosition().then((position) {
+      updateUserLocation(userId, position.longitude, position.latitude);
+    });
+  } catch (e) {
+    print('$e test');
+  }
 }
 
 Future<Position> determinePosition() async {
