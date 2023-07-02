@@ -1,4 +1,6 @@
 import 'package:betweener/providers/connectivity_provider.dart';
+import 'package:betweener/views/auth/login_view.dart';
+import 'package:betweener/views/auth/register_view.dart';
 import 'package:betweener/views/onbording/onbording_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +30,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (context) => const OnBoardingView(),
+          LoginView.id: (context) => const LoginView(),
+          RegisterView.id: (context) => const RegisterView(),
         },
       ),
     );
