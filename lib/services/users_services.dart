@@ -1,4 +1,4 @@
-import 'package:betweener/util/constants.dart';
+import 'package:betweener/core/util/constants.dart';
 import 'package:http/http.dart' as http;
 
 void updateUserLocation(double long, double lat) async {
