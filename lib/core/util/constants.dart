@@ -6,7 +6,11 @@ const baseUrl = 'https://e43d-188-225-251-154.ngrok-free.app/api';
 const registerUrl = '$baseUrl/register';
 const loginUrl = '$baseUrl/login';
 const updateUserLocationUrl = '$baseUrl/update';
+const updateUserFcm = '$baseUrl/fcm';
 const longPressShareUrl = '$baseUrl/longPressShare';
+const activeShare = '$baseUrl/activeShare';
+
+enum ActiveSharingType { sender, receiver }
 
 // ============= STYLE CONSTS ==============
 

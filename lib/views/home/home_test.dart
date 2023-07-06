@@ -1,21 +1,33 @@
 import 'package:betweener/providers/connectivity_provider.dart';
+import 'package:betweener/services/users_services.dart';
+import 'package:betweener/views/home/receiver_page.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../services/ip_location_services.dart';
 import '../../services/long_press_to_share.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+class MyHomePageTest extends StatefulWidget {
+  const MyHomePageTest({super.key, required this.title});
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyHomePageTest> createState() => _MyHomePageTestState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageTestState extends State<MyHomePageTest> {
+  Future<void> getFcm() async {
+    await FirebaseMessaging.instance.getToken().then((value) {
+      print('fcmToken: $value');
+      if (value != null) {
+        updateFcm(6, value);
+      }
+    });
+  }
+
   @override
   void initState() {
-    updatePosition(userId: 6);
+    getFcm();
     super.initState();
   }
 
@@ -24,6 +36,19 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return const ReceiverPage();
+                }),
+              );
+            },
+            icon: Icon(Icons.call_received),
+          )
+        ],
       ),
       body: Stack(alignment: Alignment.bottomCenter, children: [
         Column(
