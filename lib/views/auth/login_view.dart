@@ -3,6 +3,7 @@ import 'package:betweener/core/widgets/custom_labeled_textfield.dart';
 import 'package:betweener/core/widgets/primary_outlined_button_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
 import 'package:betweener/views/auth/register_view.dart';
+import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -26,7 +27,9 @@ class LoginView extends StatelessWidget {
                 const Spacer(),
                 SizedBox(
                     height: MediaQuery.of(context).size.height / 5,
-                    child: SvgPicture.asset(AssetsData.AuthImage)),
+                    child: Hero(
+                        tag: 'authImage',
+                        child: SvgPicture.asset(AssetsData.authImage))),
                 const Spacer(),
                 PrimaryLabeledTextField(
                   controller: TextEditingController(),
@@ -45,7 +48,11 @@ class LoginView extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                SecondaryButtonWidget(onTap: () {}, text: 'LOGIN'),
+                SecondaryButtonWidget(
+                    onTap: () {
+                      Navigator.pushNamed(context, AppView.id);
+                    },
+                    text: 'LOGIN'),
                 const SizedBox(
                   height: 24,
                 ),

@@ -1,43 +1,19 @@
 import 'package:betweener/providers/connectivity_provider.dart';
-import 'package:betweener/views/home/home_test.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:betweener/views/auth/login_view.dart';
 import 'package:betweener/views/auth/register_view.dart';
+import 'package:betweener/views/home/home_view.dart';
+import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:betweener/views/onbording/onbording_view.dart';
+import 'package:betweener/views/scan_qr/scan_qr_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
+import 'core/util/constants.dart';
+import 'views/profile/profile_view.dart';
 
-  NotificationSettings settings = await messaging.requestPermission(
-    alert: true,
-    announcement: false,
-    badge: true,
-    carPlay: false,
-    criticalAlert: false,
-    provisional: false,
-    sound: true,
-  );
-
-  print('User granted permission: ${settings.authorizationStatus}');
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
-
-    if (message.notification != null) {
-      print(
-          'Message also contained a notification: ${message.notification!.title}');
-    }
-  });
-
-
+void main() {
+  runApp(const MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -51,17 +27,20 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Betweener',
         theme: ThemeData(
-          useMaterial3: true,
-          colorSchemeSeed: kPrimaryColor,
-        ),
-        home: const MyHomePageTest(title: 'Betweener'),
-=======
+            useMaterial3: true,
+            colorSchemeSeed: kPrimaryColor,
+            scaffoldBackgroundColor: kScaffoldColor),
         routes: {
           '/': (context) => const OnBoardingView(),
           LoginView.id: (context) => const LoginView(),
           RegisterView.id: (context) => const RegisterView(),
+          HomeView.id: (context) => const HomeView(),
+          AppView.id: (context) => const AppView(),
+          ProfileView.id: (context) => const ProfileView(),
+          ScanQrView.id: (context) => const ScanQrView(),
         },
       ),
     );
