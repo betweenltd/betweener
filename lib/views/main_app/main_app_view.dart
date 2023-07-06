@@ -63,7 +63,7 @@ class _AppViewState extends State<AppView> {
             IconButton(
               onPressed: () {},
               icon: const Icon(
-                Icons.notifications,
+                Icons.emergency_share,
                 color: kPrimaryColor,
                 size: 32,
               ),
