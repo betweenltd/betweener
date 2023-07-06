@@ -1,3 +1,4 @@
+import 'package:betweener/core/util/shared_prefs.dart';
 import 'package:betweener/providers/connectivity_provider.dart';
 import 'package:betweener/views/auth/login_view.dart';
 import 'package:betweener/views/auth/register_view.dart';
@@ -14,7 +15,12 @@ import 'package:provider/provider.dart';
 import 'core/util/constants.dart';
 import 'views/profile/profile_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final sharedPrefsController = SharedPrefController();
+  await sharedPrefsController.initPreferences();
+
   runApp(const MyApp());
 }
 
@@ -44,10 +50,10 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: kScaffoldColor),
         routes: {
           '/': (context) => const OnBoardingView(),
-          LoginView.id: (context) => const LoginView(),
-          RegisterView.id: (context) => const RegisterView(),
+          LoginView.id: (context) => LoginView(),
+          RegisterView.id: (context) => RegisterView(),
           HomeView.id: (context) => const HomeView(),
-          AppView.id: (context) => const AppView(),
+          MainAppView.id: (context) => const MainAppView(),
           ProfileView.id: (context) => const ProfileView(),
           ScanQrView.id: (context) => const ScanQrView(),
           EditProfileView.id: (context) => const EditProfileView(),
