@@ -13,3 +13,16 @@ void updateUserLocation(int userId, double long, double lat) async {
   print('Response status: ${response.statusCode}');
   print('Response body: ${response.body}');
 }
+
+void updateFcm(int userId, String fcm) async {
+  var url = Uri.parse('$updateUserFcm/$userId');
+  var response = await http.put(
+    url,
+    body: {'fcm': fcm},
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+  );
+  print('Response status: ${response.statusCode}');
+  print('Response body: ${response.body}');
+}
