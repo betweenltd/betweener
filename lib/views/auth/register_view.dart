@@ -1,5 +1,5 @@
 import 'package:betweener/core/util/assets.dart';
-import 'package:betweener/core/widgets/custom_labeled_textfield.dart';
+import 'package:betweener/core/widgets/custom_labeled_textfield_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,7 +44,7 @@ class RegisterView extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                PrimaryLabeledTextField(
+                PrimaryLabeledTextFieldWidget(
                   controller: TextEditingController(),
                   hint: 'John Doe',
                   label: 'Name',
@@ -52,7 +52,7 @@ class RegisterView extends StatelessWidget {
                 const SizedBox(
                   height: 14,
                 ),
-                PrimaryLabeledTextField(
+                PrimaryLabeledTextFieldWidget(
                   controller: TextEditingController(),
                   hint: 'example@gmail.com',
                   label: 'Email',
@@ -60,7 +60,7 @@ class RegisterView extends StatelessWidget {
                 const SizedBox(
                   height: 14,
                 ),
-                PrimaryLabeledTextField(
+                PrimaryLabeledTextFieldWidget(
                   controller: TextEditingController(),
                   hint: 'Enter password',
                   label: 'password',

@@ -4,6 +4,9 @@ import 'package:betweener/views/auth/register_view.dart';
 import 'package:betweener/views/home/home_view.dart';
 import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:betweener/views/onbording/onbording_view.dart';
+import 'package:betweener/views/profile/add_link_view.dart';
+import 'package:betweener/views/profile/edit_link_view.dart';
+import 'package:betweener/views/profile/edit_profile_view.dart';
 import 'package:betweener/views/scan_qr/scan_qr_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +35,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
             useMaterial3: true,
             colorSchemeSeed: kPrimaryColor,
+            appBarTheme: const AppBarTheme(
+              titleTextStyle: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: kPrimaryColor),
+            ),
             scaffoldBackgroundColor: kScaffoldColor),
         routes: {
           '/': (context) => const OnBoardingView(),
@@ -41,6 +50,9 @@ class MyApp extends StatelessWidget {
           AppView.id: (context) => const AppView(),
           ProfileView.id: (context) => const ProfileView(),
           ScanQrView.id: (context) => const ScanQrView(),
+          EditProfileView.id: (context) => const EditProfileView(),
+          EditLinkView.id: (context) => const EditLinkView(),
+          AddLinkView.id: (context) => const AddLinkView(),
         },
       ),
     );

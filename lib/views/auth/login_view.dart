@@ -1,5 +1,5 @@
 import 'package:betweener/core/util/assets.dart';
-import 'package:betweener/core/widgets/custom_labeled_textfield.dart';
+import 'package:betweener/core/widgets/custom_labeled_textfield_widget.dart';
 import 'package:betweener/core/widgets/primary_outlined_button_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
 import 'package:betweener/views/auth/register_view.dart';
@@ -31,7 +31,7 @@ class LoginView extends StatelessWidget {
                         tag: 'authImage',
                         child: SvgPicture.asset(AssetsData.authImage))),
                 const Spacer(),
-                PrimaryLabeledTextField(
+                PrimaryLabeledTextFieldWidget(
                   controller: TextEditingController(),
                   hint: 'example@gmail.com',
                   label: 'Email',
@@ -39,7 +39,7 @@ class LoginView extends StatelessWidget {
                 const SizedBox(
                   height: 14,
                 ),
-                PrimaryLabeledTextField(
+                PrimaryLabeledTextFieldWidget(
                   controller: TextEditingController(),
                   hint: 'Enter password',
                   label: 'password',
