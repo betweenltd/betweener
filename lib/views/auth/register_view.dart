@@ -38,7 +38,9 @@ class RegisterView extends StatelessWidget {
                 const Spacer(),
                 SizedBox(
                     height: MediaQuery.of(context).size.height / 8,
-                    child: SvgPicture.asset(AssetsData.AuthImage)),
+                    child: Hero(
+                        tag: 'authImage',
+                        child: SvgPicture.asset(AssetsData.authImage))),
                 const SizedBox(
                   height: 24,
                 ),
