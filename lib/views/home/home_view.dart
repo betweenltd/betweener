@@ -1,8 +1,8 @@
 import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/util/constants.dart';
+import 'package:betweener/views/home/widgets/circle_check_indicator_widget.dart';
 import 'package:betweener/views/home/widgets/custom_qr_border.dart';
 import 'package:betweener/views/home/widgets/social_cards_list_view.dart';
-import 'package:betweener/views/main_app/widgets/circle_check_indicator_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
