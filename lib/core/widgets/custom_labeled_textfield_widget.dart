@@ -1,16 +1,16 @@
 import 'package:betweener/core/util/styles.dart';
 import 'package:flutter/material.dart';
 
-class PrimaryLabeledTextField extends StatelessWidget {
+class PrimaryLabeledTextFieldWidget extends StatelessWidget {
   final String label;
-  final String hint;
+  final String? hint;
   final TextEditingController? controller;
   final bool password;
-  const PrimaryLabeledTextField(
+  const PrimaryLabeledTextFieldWidget(
       {super.key,
       required this.label,
       this.controller,
-      required this.hint,
+      this.hint,
       this.password = false});
 
   @override
