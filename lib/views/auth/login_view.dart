@@ -2,6 +2,7 @@ import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/widgets/custom_labeled_textfield_widget.dart';
 import 'package:betweener/core/widgets/primary_outlined_button_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
+import 'package:betweener/services/auth_services.dart';
 import 'package:betweener/views/auth/register_view.dart';
 import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,10 @@ import 'widgets/google_button_widget.dart';
 class LoginView extends StatelessWidget {
   static String id = '/loginView';
 
-  const LoginView({super.key});
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +36,7 @@ class LoginView extends StatelessWidget {
                         child: SvgPicture.asset(AssetsData.authImage))),
                 const Spacer(),
                 PrimaryLabeledTextFieldWidget(
-                  controller: TextEditingController(),
+                  controller: emailController,
                   hint: 'example@gmail.com',
                   label: 'Email',
                 ),
@@ -40,7 +44,7 @@ class LoginView extends StatelessWidget {
                   height: 14,
                 ),
                 PrimaryLabeledTextFieldWidget(
-                  controller: TextEditingController(),
+                  controller: passwordController,
                   hint: 'Enter password',
                   label: 'password',
                   password: true,
@@ -50,7 +54,14 @@ class LoginView extends StatelessWidget {
                 ),
                 SecondaryButtonWidget(
                     onTap: () {
-                      Navigator.pushNamed(context, AppView.id);
+                      AuthServices.userSignIn(
+                              email: emailController.text,
+                              password: passwordController.text)
+                          .then((value) {
+                        if (value == true) {
+                          Navigator.pushNamed(context, MainAppView.id);
+                        }
+                      });
                     },
                     text: 'LOGIN'),
                 const SizedBox(

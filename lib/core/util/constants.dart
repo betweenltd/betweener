@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ============= API CONSTS =============
 
-const baseUrl = 'https://e43d-188-225-251-154.ngrok-free.app/api';
+const baseUrl = 'http://192.168.137.145/api';
 const registerUrl = '$baseUrl/register';
 const loginUrl = '$baseUrl/login';
 const updateUserLocationUrl = '$baseUrl/update';

@@ -1,6 +1,8 @@
 import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/widgets/custom_labeled_textfield_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
+import 'package:betweener/services/auth_services.dart';
+import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -9,7 +11,12 @@ import 'widgets/google_button_widget.dart';
 class RegisterView extends StatelessWidget {
   static String id = '/registerView';
 
-  const RegisterView({super.key});
+  TextEditingController nameController = TextEditingController(text: 'ss');
+  TextEditingController emailController =
+      TextEditingController(text: 'ss@ss.com');
+  TextEditingController passwordController = TextEditingController(text: '123');
+
+  RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +52,7 @@ class RegisterView extends StatelessWidget {
                   height: 24,
                 ),
                 PrimaryLabeledTextFieldWidget(
-                  controller: TextEditingController(),
+                  controller: nameController,
                   hint: 'John Doe',
                   label: 'Name',
                 ),
@@ -53,7 +60,7 @@ class RegisterView extends StatelessWidget {
                   height: 14,
                 ),
                 PrimaryLabeledTextFieldWidget(
-                  controller: TextEditingController(),
+                  controller: emailController,
                   hint: 'example@gmail.com',
                   label: 'Email',
                 ),
@@ -61,7 +68,7 @@ class RegisterView extends StatelessWidget {
                   height: 14,
                 ),
                 PrimaryLabeledTextFieldWidget(
-                  controller: TextEditingController(),
+                  controller: passwordController,
                   hint: 'Enter password',
                   label: 'password',
                   password: true,
@@ -69,7 +76,19 @@ class RegisterView extends StatelessWidget {
                 const SizedBox(
                   height: 24,
                 ),
-                SecondaryButtonWidget(onTap: () {}, text: 'REGISTER'),
+                SecondaryButtonWidget(
+                    onTap: () {
+                      AuthServices.userSignUp(
+                              name: nameController.text,
+                              email: emailController.text,
+                              password: passwordController.text)
+                          .then((value) {
+                        if (value == true) {
+                          Navigator.pushNamed(context, MainAppView.id);
+                        }
+                      });
+                    },
+                    text: 'REGISTER'),
                 const SizedBox(
                   height: 12,
                 ),

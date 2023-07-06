@@ -7,16 +7,16 @@ import 'package:betweener/views/scan_qr/scan_qr_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
-class AppView extends StatefulWidget {
-  static String id = '/appView';
+class MainAppView extends StatefulWidget {
+  static String id = '/mainAppView';
 
-  const AppView({super.key});
+  const MainAppView({super.key});
 
   @override
-  State<AppView> createState() => _AppViewState();
+  State<MainAppView> createState() => _MainAppViewState();
 }
 
-class _AppViewState extends State<AppView> {
+class _MainAppViewState extends State<MainAppView> {
   int _currentIndex = 1;
   bool isFabVisible = true;
 
