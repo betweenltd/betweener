@@ -5,7 +5,7 @@ import 'package:betweener/models/user_signup_model.dart';
 import 'package:http/http.dart' as http;
 
 class AuthServices {
-  static final sharedPrefsController = SharedPrefController();
+  static final sharedPrefsController = SharedPrefsController();
 
   static Future<bool?> userSignUp({
     required String name,
@@ -31,6 +31,7 @@ class AuthServices {
     } catch (e) {
       return false;
     }
+    return null;
   }
 
   static Future<bool?> userSignIn({
@@ -51,9 +52,12 @@ class AuthServices {
       if (response.statusCode == 200) {
         UserSignInModel user = userSignInModelFromJson(response.body);
         return await sharedPrefsController.saveLoginData(user);
+      } else if (response.statusCode == 400) {
+        return false;
       }
     } catch (e) {
-      return false;
+      return null;
     }
+    return null;
   }
 }

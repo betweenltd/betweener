@@ -6,12 +6,14 @@ class PrimaryLabeledTextFieldWidget extends StatelessWidget {
   final String? hint;
   final TextEditingController? controller;
   final bool password;
+  final TextInputType? keyboardType;
   const PrimaryLabeledTextFieldWidget(
       {super.key,
       required this.label,
       this.controller,
       this.hint,
-      this.password = false});
+      this.password = false,
+      this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class PrimaryLabeledTextFieldWidget extends StatelessWidget {
         SizedBox(
           height: 50,
           child: TextField(
+            keyboardType: keyboardType,
             controller: controller,
             obscureText: password,
             enableSuggestions: password == true ? false : true,

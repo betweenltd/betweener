@@ -1,8 +1,10 @@
 import 'package:betweener/core/util/shared_prefs.dart';
 import 'package:betweener/providers/connectivity_provider.dart';
+import 'package:betweener/providers/followers_provider.dart';
 import 'package:betweener/views/auth/login_view.dart';
 import 'package:betweener/views/auth/register_view.dart';
 import 'package:betweener/views/home/home_view.dart';
+import 'package:betweener/views/loading/loading_view.dart';
 import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:betweener/views/onbording/onbording_view.dart';
 import 'package:betweener/views/profile/add_link_view.dart';
@@ -17,9 +19,7 @@ import 'views/profile/profile_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  final sharedPrefsController = SharedPrefController();
-  await sharedPrefsController.initPreferences();
+  await SharedPrefsController().init();
 
   runApp(const MyApp());
 }
@@ -34,6 +34,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<MyConnectivity>(
           create: (_) => MyConnectivity(),
         ),
+        ChangeNotifierProvider<FollowersProvider>(
+            create: (_) => FollowersProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -48,8 +50,18 @@ class MyApp extends StatelessWidget {
                   color: kPrimaryColor),
             ),
             scaffoldBackgroundColor: kScaffoldColor),
+        home: FutureBuilder<bool>(
+          future: SharedPrefsController().shouldShowOnboarding(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData && snapshot.data == true) {
+              return const OnBoardingView();
+            } else {
+              return const LoadingView();
+            }
+          },
+        ),
         routes: {
-          '/': (context) => const OnBoardingView(),
+          LoadingView.id: (context) => const LoadingView(),
           LoginView.id: (context) => LoginView(),
           RegisterView.id: (context) => RegisterView(),
           HomeView.id: (context) => const HomeView(),

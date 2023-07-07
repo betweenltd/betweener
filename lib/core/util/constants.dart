@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 
 // ============= API CONSTS =============
 
-const baseUrl = 'http://192.168.137.145/api';
+const baseUrl = 'http://192.168.1.103/api';
 const registerUrl = '$baseUrl/register';
 const loginUrl = '$baseUrl/login';
 const updateUserLocationUrl = '$baseUrl/update';
 const updateUserFcm = '$baseUrl/fcm';
 const longPressShareUrl = '$baseUrl/longPressShare';
 const activeShare = '$baseUrl/activeShare';
+const followersUrl = '$baseUrl/followers';
 
 enum ActiveSharingType { sender, receiver }
 

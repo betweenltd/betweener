@@ -1,9 +1,10 @@
+import 'package:betweener/services/follow_service.dart';
 import 'package:betweener/views/profile/edit_profile_view.dart';
 import 'package:betweener/views/profile/widgets/links_list_view.dart';
 import 'package:betweener/views/profile/widgets/profile_card_widget.dart';
 import 'package:flutter/material.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   static const id = '/profileView';
 
   final bool Function(UserScrollNotification)? onNotification;
@@ -11,9 +12,32 @@ class ProfileView extends StatelessWidget {
   const ProfileView({super.key, this.onNotification});
 
   @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  String? followers;
+
+  getFollowersCount() {
+    FollowServices.getFollowersCount().then((value) {
+      if (mounted) {
+        setState(() {
+          followers = value.toString();
+        });
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    followers = getFollowersCount();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return NotificationListener<UserScrollNotification>(
-      onNotification: onNotification,
+      onNotification: widget.onNotification,
       child: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(
@@ -25,6 +49,7 @@ class ProfileView extends StatelessWidget {
                     name: 'John Doe',
                     email: 'example@gmail.com',
                     phoneNumber: '+9700000000',
+                    followersCount: '$followers',
                     editOnTap: () {
                       Navigator.pushNamed(context, EditProfileView.id);
                     },

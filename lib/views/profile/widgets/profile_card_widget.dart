@@ -5,6 +5,7 @@ class ProfileCardWidget extends StatelessWidget {
   final String name;
   final String email;
   final String phoneNumber;
+  final String followersCount;
   final Function()? editOnTap;
 
   const ProfileCardWidget(
@@ -12,6 +13,7 @@ class ProfileCardWidget extends StatelessWidget {
       required this.name,
       required this.email,
       required this.phoneNumber,
+      required this.followersCount,
       required this.editOnTap});
 
   @override
@@ -55,7 +57,14 @@ class ProfileCardWidget extends StatelessWidget {
                         color: Colors.white,
                         fontSize: 14,
                         fontWeight: FontWeight.w600),
-                  )
+                  ),
+                  Text(
+                    followersCount,
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600),
+                  ),
                 ],
               ),
               const Spacer(
