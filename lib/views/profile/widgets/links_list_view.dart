@@ -31,7 +31,7 @@ class LinksListView extends StatelessWidget {
               {
                 cardBackgroundColor = const Color(0xffE7E5F1);
                 titleColor = kPrimaryColor;
-                linkColor = kLightPrimaryColor;
+                linkColor = kLinksColor;
               }
               break;
             default:

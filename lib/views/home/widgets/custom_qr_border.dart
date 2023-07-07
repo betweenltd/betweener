@@ -29,7 +29,7 @@ class CustomQrBorder extends StatelessWidget {
           MediaQuery.of(context).size.width - padding * 2);
     return DottedBorder(
       customPath: (_) => customPath,
-      color: kLightPrimaryColor,
+      color: kLinksColor,
       dashPattern: const [1, 1],
       strokeWidth: 2,
       child: AspectRatio(

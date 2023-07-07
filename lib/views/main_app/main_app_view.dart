@@ -1,5 +1,6 @@
 import 'package:betweener/core/util/constants.dart';
 import 'package:betweener/views/home/home_view.dart';
+import 'package:betweener/views/home/receive_view.dart';
 import 'package:betweener/views/main_app/widgets/custom_floating_nav_bar.dart';
 import 'package:betweener/views/profile/add_link_view.dart';
 import 'package:betweener/views/profile/profile_view.dart';
@@ -61,7 +62,9 @@ class _MainAppViewState extends State<MainAppView> {
         actions: [
           if (_currentIndex == 1) ...[
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, ReceiveView.id);
+              },
               icon: const Icon(
                 Icons.emergency_share,
                 color: kPrimaryColor,

@@ -10,6 +10,10 @@ class FollowersProvider extends ChangeNotifier {
   int? _followersCount;
   int? get followersCount => _followersCount;
 
+  FollowersProvider() {
+    getFollowersCount();
+  }
+
   void getFollowersCount() async {
     _state = FollowersProviderState.loading;
 
