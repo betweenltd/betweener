@@ -41,15 +41,16 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Betweener',
         theme: ThemeData(
-            useMaterial3: true,
-            colorSchemeSeed: kPrimaryColor,
-            appBarTheme: const AppBarTheme(
-              titleTextStyle: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: kPrimaryColor),
-            ),
-            scaffoldBackgroundColor: kScaffoldColor),
+          useMaterial3: true,
+          colorSchemeSeed: kPrimaryColor,
+          appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: kPrimaryColor),
+          ),
+          scaffoldBackgroundColor: kScaffoldColor,
+        ),
         home: FutureBuilder<bool>(
           future: SharedPrefsController().shouldShowOnboarding(),
           builder: (context, snapshot) {

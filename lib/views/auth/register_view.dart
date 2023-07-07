@@ -9,7 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'widgets/google_button_widget.dart';
 
 class RegisterView extends StatelessWidget {
-  static String id = '/registerView';
+  static const String id = '/registerView';
 
   TextEditingController nameController = TextEditingController(text: 'ss');
   TextEditingController emailController =
