@@ -18,7 +18,7 @@ class MainAppView extends StatefulWidget {
 }
 
 class _MainAppViewState extends State<MainAppView> {
-  int _currentIndex = 1;
+  int _currentIndex = 0;
   bool isFabVisible = true;
 
   bool onNotification(UserScrollNotification notification) {
@@ -41,8 +41,8 @@ class _MainAppViewState extends State<MainAppView> {
   }
 
   late List<Widget?> screensList = [
-    const ScanQrView(),
     const HomeView(),
+    const ReceiveView(),
     ProfileView(
       onNotification: onNotification,
     )

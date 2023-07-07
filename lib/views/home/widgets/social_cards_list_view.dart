@@ -37,16 +37,17 @@ class SocialCardsListView extends StatelessWidget {
           itemBuilder: (context, index) {
             if (index == 9) {
               return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                padding: EdgeInsets.only(left: 12.0, right: 24),
                 child: SocialCardsItem(
                     color: kLightPrimaryColor,
                     title: 'Add More',
                     icon: Icons.add,
                     contentColor: kPrimaryColor),
               );
-            } else {
+            }
+            if (index == 0) {
               return const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
+                padding: EdgeInsets.only(left: 24, right: 12),
                 child: SocialCardsItem(
                     color: kLightSecondaryColor,
                     title: 'FaceBook',
@@ -54,6 +55,14 @@ class SocialCardsListView extends StatelessWidget {
                     contentColor: kOnSecondaryColor),
               );
             }
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.0),
+              child: SocialCardsItem(
+                  color: kLightSecondaryColor,
+                  title: 'FaceBook',
+                  user: '@A7medhq',
+                  contentColor: kOnSecondaryColor),
+            );
           },
           itemCount: 10,
         ),
