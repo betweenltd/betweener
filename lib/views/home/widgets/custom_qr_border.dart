@@ -3,29 +3,30 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 
 class CustomQrBorder extends StatelessWidget {
-  const CustomQrBorder({super.key});
+  final int padding;
+  const CustomQrBorder({super.key, required this.padding});
 
   @override
   Widget build(BuildContext context) {
     Path customPath = Path()
       ..moveTo(0, 0)
-      ..lineTo(0, (MediaQuery.of(context).size.width - 64) / 4)
+      ..lineTo(0, (MediaQuery.of(context).size.width - padding * 2) / 4)
       ..moveTo(0, 0)
-      ..lineTo((MediaQuery.of(context).size.width - 64) / 4, 0)
-      ..moveTo((MediaQuery.of(context).size.width - 64) / 4 * 3, 0)
-      ..lineTo(MediaQuery.of(context).size.width - 64, 0)
-      ..lineTo(MediaQuery.of(context).size.width - 64,
-          (MediaQuery.of(context).size.width - 64) / 4)
-      ..moveTo(0, (MediaQuery.of(context).size.width - 64) / 4 * 3)
-      ..lineTo(0, MediaQuery.of(context).size.width - 64)
-      ..lineTo((MediaQuery.of(context).size.width - 64) / 4,
-          MediaQuery.of(context).size.width - 64)
-      ..moveTo(MediaQuery.of(context).size.width - 64,
-          (MediaQuery.of(context).size.width - 64) / 4 * 3)
-      ..lineTo(MediaQuery.of(context).size.width - 64,
-          MediaQuery.of(context).size.width - 64)
-      ..lineTo((MediaQuery.of(context).size.width - 64) / 4 * 3,
-          MediaQuery.of(context).size.width - 64);
+      ..lineTo((MediaQuery.of(context).size.width - padding * 2) / 4, 0)
+      ..moveTo((MediaQuery.of(context).size.width - padding * 2) / 4 * 3, 0)
+      ..lineTo(MediaQuery.of(context).size.width - padding * 2, 0)
+      ..lineTo(MediaQuery.of(context).size.width - padding * 2,
+          (MediaQuery.of(context).size.width - padding * 2) / 4)
+      ..moveTo(0, (MediaQuery.of(context).size.width - padding * 2) / 4 * 3)
+      ..lineTo(0, MediaQuery.of(context).size.width - padding * 2)
+      ..lineTo((MediaQuery.of(context).size.width - padding * 2) / 4,
+          MediaQuery.of(context).size.width - padding * 2)
+      ..moveTo(MediaQuery.of(context).size.width - padding * 2,
+          (MediaQuery.of(context).size.width - padding * 2) / 4 * 3)
+      ..lineTo(MediaQuery.of(context).size.width - padding * 2,
+          MediaQuery.of(context).size.width - padding * 2)
+      ..lineTo((MediaQuery.of(context).size.width - padding * 2) / 4 * 3,
+          MediaQuery.of(context).size.width - padding * 2);
     return DottedBorder(
       customPath: (_) => customPath,
       color: kLightPrimaryColor,
