@@ -1,7 +1,6 @@
-import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/util/constants.dart';
 import 'package:betweener/views/home/widgets/circle_check_indicator_widget.dart';
-import 'package:betweener/views/home/widgets/custom_qr_border.dart';
+import 'package:betweener/views/home/widgets/qrcode_image_widget.dart';
 import 'package:betweener/views/home/widgets/social_cards_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -36,12 +35,9 @@ class _HomeViewState extends State<HomeView>
           _progress = _scaleTransition.value;
         });
 
-        if (_scaleTransition.value == 1) {
-          HapticFeedback.heavyImpact();
-        }
         if (_progress == 1) {
+          HapticFeedback.heavyImpact();
           _scaleTransition.removeListener(() {});
-          _controller.stop();
         }
       });
   }
@@ -50,61 +46,46 @@ class _HomeViewState extends State<HomeView>
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 32.0),
-      child: Stack(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Hello, Ahmed!',
-                style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w600),
-              ),
-              const Spacer(),
-              GestureDetector(
-                onTapDown: (details) {
-                  setState(() => scale = scale == 1.0 ? 1.15 : 1.0);
-                  _controller.forward();
-                },
-                onTapUp: (TapUpDetails details) {
-                  setState(() => scale = scale == 1.15 ? 1.0 : 1.15);
-                  _controller.reverse();
-                },
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    const CustomQrBorder(),
-                    AnimatedScale(
-                      scale: scale,
-                      duration: const Duration(milliseconds: 500),
-                      child: Image.asset(
-                        AssetsData.qrImage,
-                        color: kPrimaryColor,
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              const Spacer(),
-              const Divider(
-                thickness: 2,
-                color: kPrimaryColor,
-                indent: 50,
-                endIndent: 50,
-              ),
-              const Spacer(),
-              const SocialCardsListView(),
-              const Spacer(
-                flex: 4,
-              ),
-            ],
-          ),
           CircleCheckIndicator(
             scaleTransition: _scaleTransition,
             progress: _progress,
-          )
+          ),
+          const Text(
+            'Hello, Ahmed!',
+            style: TextStyle(
+                color: kPrimaryColor,
+                fontSize: 28,
+                fontWeight: FontWeight.w600),
+          ),
+          const Spacer(),
+          GestureDetector(
+              onTap: () {},
+              onLongPress: () {
+                setState(() => scale = scale == 1.0 ? 1.15 : 1.0);
+                _controller.forward();
+              },
+              onLongPressUp: () {
+                setState(() => scale = scale == 1.15 ? 1.0 : 1.15);
+                _controller.reverse();
+              },
+              child: QrCodeImageWidget(
+                scale: scale,
+              )),
+          const Spacer(),
+          const Divider(
+            thickness: 2,
+            color: kPrimaryColor,
+            indent: 50,
+            endIndent: 50,
+          ),
+          const Spacer(),
+          const SocialCardsListView(),
+          const Spacer(
+            flex: 4,
+          ),
         ],
       ),
     );
