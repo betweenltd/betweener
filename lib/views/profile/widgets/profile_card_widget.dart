@@ -1,5 +1,7 @@
 import 'package:betweener/core/util/constants.dart';
+import 'package:betweener/providers/followers_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileCardWidget extends StatelessWidget {
   final String name;
@@ -34,7 +36,7 @@ class ProfileCardWidget extends StatelessWidget {
               ),
               const Spacer(),
               Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
@@ -51,19 +53,50 @@ class ProfileCardWidget extends StatelessWidget {
                         fontSize: 14,
                         fontWeight: FontWeight.w600),
                   ),
-                  Text(
-                    phoneNumber,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Text(
-                    followersCount,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600),
+                  Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.white38,
+                        ),
+                        child: const Text(
+                          'followers',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 4,
+                      ),
+                      Consumer<FollowersProvider>(
+                        builder: (context, followersProvider, child) {
+                          if (followersProvider.state ==
+                              FollowersProviderState.loaded) {
+                            return Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: Colors.white38,
+                              ),
+                              child: Text(
+                                followersProvider.followersCount.toString(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            );
+                          } else {
+                            return const SizedBox.shrink();
+                          }
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),

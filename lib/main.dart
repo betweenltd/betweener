@@ -4,6 +4,7 @@ import 'package:betweener/providers/followers_provider.dart';
 import 'package:betweener/views/auth/login_view.dart';
 import 'package:betweener/views/auth/register_view.dart';
 import 'package:betweener/views/home/home_view.dart';
+import 'package:betweener/views/home/receive_view.dart';
 import 'package:betweener/views/loading/loading_view.dart';
 import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:betweener/views/onbording/onbording_view.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
           EditProfileView.id: (context) => const EditProfileView(),
           EditLinkView.id: (context) => const EditLinkView(),
           AddLinkView.id: (context) => const AddLinkView(),
+          ReceiveView.id: (context) => const ReceiveView(),
         },
       ),
     );
