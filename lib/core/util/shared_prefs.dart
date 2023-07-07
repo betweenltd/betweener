@@ -2,31 +2,46 @@ import 'package:betweener/models/user_signin_model.dart';
 import 'package:betweener/models/user_signup_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-enum PrefKeys { id, name, email, password, token, loggedIn, code }
+class SharedPrefsController {
+  final String _onBoardingKey = 'onBoarding';
+  SharedPreferences? _prefs;
 
-class SharedPrefController {
-  //singleton
-  SharedPrefController._();
+  static final SharedPrefsController _instance =
+      SharedPrefsController._internal();
 
-  late SharedPreferences _sharedPreferences;
-
-  static SharedPrefController? _instance;
-
-  factory SharedPrefController() {
-    return _instance ??= SharedPrefController._();
+  factory SharedPrefsController() {
+    return _instance;
   }
 
-  Future<void> initPreferences() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
+  Future<void> _checkInstance() async {
+    if (_prefs == null) {
+      await init();
+    }
+  }
+
+  SharedPrefsController._internal();
+
+  Future<void> init() async {
+    _prefs = await SharedPreferences.getInstance();
+  }
+
+  Future<bool> shouldShowOnboarding() async {
+    await _checkInstance();
+    bool onboardingShown = _prefs?.getBool(_onBoardingKey) ?? false;
+    return !onboardingShown;
+  }
+
+  Future<void> setOnboardingShown() async {
+    await _checkInstance();
+    await _prefs?.setBool(_onBoardingKey, true);
   }
 
   //for example if the logged in is user
   Future<bool> saveLoginData(UserSignInModel user) async {
+    await _checkInstance();
     try {
-      await _sharedPreferences.setBool('logged_in', true);
-      await _sharedPreferences.setBool(PrefKeys.loggedIn.name, true);
-      await _sharedPreferences.setString('token', 'Bearer ${user.token}');
-      await _sharedPreferences.setString('id', user.user.id.toString());
+      await _prefs?.setString('token', 'Bearer ${user.token}');
+      await _prefs?.setString('id', user.user.id.toString());
       print(user.token);
       return true;
     } catch (e) {
@@ -38,27 +53,26 @@ class SharedPrefController {
   }
 
   Future<bool> saveSignup(UserSignUpModel user) async {
+    await _checkInstance();
     try {
-      await _sharedPreferences.setBool('logged_in', true);
-      await _sharedPreferences.setString(
-          PrefKeys.id.name, user.user.id.toString());
-      await _sharedPreferences.setString('token', 'Bearer ${user.token}');
+      await _prefs?.setString('id', user.user.id.toString());
+      await _prefs?.setString('token', 'Bearer ${user.token}');
       return true;
     } catch (e) {
       return false;
     }
   }
 
-  bool get LoggedIn => _sharedPreferences.getBool('logged_in') ?? false;
-
-  T? getValueFor<T>(String key) {
-    if (_sharedPreferences.containsKey(key)) {
-      return _sharedPreferences.get(key) as T;
+  Future<T?> getValueFor<T>(String key) async {
+    await _checkInstance();
+    if (_prefs!.containsKey(key)) {
+      return _prefs?.get(key) as T;
     }
     return null;
   }
 
-  Future<bool> clear() {
-    return _sharedPreferences.clear();
+  Future<bool?> clear() async {
+    await _checkInstance();
+    return _prefs?.clear();
   }
 }

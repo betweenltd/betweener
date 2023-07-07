@@ -1,4 +1,5 @@
 import 'package:betweener/core/util/assets.dart';
+import 'package:betweener/core/util/helpers.dart';
 import 'package:betweener/core/widgets/custom_labeled_textfield_widget.dart';
 import 'package:betweener/core/widgets/primary_outlined_button_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
@@ -38,6 +39,7 @@ class LoginView extends StatelessWidget {
                 PrimaryLabeledTextFieldWidget(
                   controller: emailController,
                   hint: 'example@gmail.com',
+                  keyboardType: TextInputType.emailAddress,
                   label: 'Email',
                 ),
                 const SizedBox(
@@ -54,14 +56,30 @@ class LoginView extends StatelessWidget {
                 ),
                 SecondaryButtonWidget(
                     onTap: () {
-                      AuthServices.userSignIn(
-                              email: emailController.text,
-                              password: passwordController.text)
-                          .then((value) {
-                        if (value == true) {
-                          Navigator.pushNamed(context, MainAppView.id);
-                        }
-                      });
+                      if (emailController.text.isEmpty ||
+                          passwordController.text.isEmpty) {
+                        FocusScope.of(context).unfocus();
+                        Helpers.showSnackbar(context,
+                            message: 'Enter your email & password',
+                            color: Colors.red);
+                      } else {
+                        AuthServices.userSignIn(
+                                email: emailController.text,
+                                password: passwordController.text)
+                            .then((result) {
+                          FocusScope.of(context).unfocus();
+                          if (result == true) {
+                            Helpers.showSnackbar(context,
+                                message: 'Logged In Successfully',
+                                color: Colors.green);
+                            Navigator.pushNamed(context, MainAppView.id);
+                          } else if (result == false) {
+                            Helpers.showSnackbar(context,
+                                message: 'wrong email or password',
+                                color: Colors.red);
+                          }
+                        });
+                      }
                     },
                     text: 'LOGIN'),
                 const SizedBox(
