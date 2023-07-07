@@ -10,8 +10,6 @@ class LoadingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Provider.of<FollowersProvider>(context, listen: false).getFollowersCount();
-
     return Consumer<FollowersProvider>(
       builder: (context, followerProvider, child) {
         if (followerProvider.state == FollowersProviderState.loaded) {

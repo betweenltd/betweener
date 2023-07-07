@@ -25,7 +25,8 @@ const kOnSecondaryColor = Color(0xff784E00);
 const kDangerColor = Color(0xffF56C61);
 
 // Low Opacity Colors
-const kLightPrimaryColor = Color(0xff807D99);
+const kLinksColor = Color(0xff807D99);
+const kLightPrimaryColor = Color(0xffE7E5F1);
 const kLightSecondaryColor = Color(0xffFFE6A6);
 const kLightDangerColor = Color(0xffFEE2E7);
 const kOnLightDangerColor = Color(0xff783341);
