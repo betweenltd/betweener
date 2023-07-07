@@ -5,24 +5,23 @@ import 'package:flutter/material.dart';
 
 class QrCodeImageWidget extends StatelessWidget {
   final double scale;
+  final double size;
 
-  const QrCodeImageWidget({super.key, required this.scale});
+  const QrCodeImageWidget({super.key, required this.scale, required this.size});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        const CustomQrBorder(padding: 32),
-        AnimatedScale(
-          scale: scale,
-          duration: const Duration(milliseconds: 500),
-          child: Image.asset(
-            AssetsData.qrImage,
-            color: kPrimaryColor,
-          ),
-        )
-      ],
+    return CustomPaint(
+      painter: CustomQrBorder(0),
+      size: Size(size, size),
+      child: AnimatedScale(
+        scale: scale,
+        duration: const Duration(milliseconds: 500),
+        child: Image.asset(
+          AssetsData.qrImage,
+          color: kPrimaryColor,
+        ),
+      ),
     );
   }
 }

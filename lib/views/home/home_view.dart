@@ -3,6 +3,7 @@ import 'package:betweener/views/home/widgets/circle_check_indicator_widget.dart'
 import 'package:betweener/views/home/widgets/qrcode_image_widget.dart';
 import 'package:betweener/views/home/widgets/social_cards_list_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
 class HomeView extends StatefulWidget {
@@ -42,26 +43,44 @@ class _HomeViewState extends State<HomeView>
       });
   }
 
+  var widgetKey = GlobalKey();
+  double oldSize = 200;
+
+  void postFrameCallback(_) {
+    var context = widgetKey.currentContext;
+    if (context == null) return;
+
+    double? newSize = context.size?.height;
+    if (oldSize == newSize) return;
+    print(newSize);
+    oldSize = newSize!;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 32.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          CircleCheckIndicator(
-            scaleTransition: _scaleTransition,
-            progress: _progress,
-          ),
-          const Text(
+    SchedulerBinding.instance.addPostFrameCallback(postFrameCallback);
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        CircleCheckIndicator(
+          scaleTransition: _scaleTransition,
+          progress: _progress,
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
+          child: const Text(
             'Hello, Ahmed!',
             style: TextStyle(
                 color: kPrimaryColor,
-                fontSize: 28,
+                fontSize: 24,
                 fontWeight: FontWeight.w600),
           ),
-          const Spacer(),
-          GestureDetector(
+        ),
+        Expanded(
+          key: widgetKey,
+          child: Center(
+            child: GestureDetector(
               onTap: () {},
               onLongPress: () {
                 setState(() => scale = scale == 1.0 ? 1.15 : 1.0);
@@ -73,21 +92,25 @@ class _HomeViewState extends State<HomeView>
               },
               child: QrCodeImageWidget(
                 scale: scale,
-              )),
-          const Spacer(),
-          const Divider(
-            thickness: 2,
-            color: kPrimaryColor,
-            indent: 50,
-            endIndent: 50,
+                size: oldSize,
+              ),
+            ),
           ),
-          const Spacer(),
-          const SocialCardsListView(),
-          const Spacer(
-            flex: 4,
-          ),
-        ],
-      ),
+        ),
+        const Divider(
+          thickness: 2,
+          color: kPrimaryColor,
+          indent: 50,
+          endIndent: 50,
+        ),
+        SizedBox(
+          height: 8,
+        ),
+        const SocialCardsListView(),
+        SizedBox(
+          height: 100,
+        )
+      ],
     );
   }
 }
