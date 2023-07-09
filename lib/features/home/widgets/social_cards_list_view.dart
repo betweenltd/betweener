@@ -1,5 +1,5 @@
 import 'package:betweener/core/util/constants.dart';
-import 'package:betweener/views/home/widgets/social_cards_item.dart';
+import 'package:betweener/features/home/widgets/social_cards_item.dart';
 import 'package:flutter/material.dart';
 
 class SocialCardsListView extends StatelessWidget {
