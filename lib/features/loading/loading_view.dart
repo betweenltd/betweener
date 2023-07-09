@@ -1,8 +1,9 @@
 import 'package:betweener/providers/followers_provider.dart';
-import 'package:betweener/views/auth/login_view.dart';
-import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../auth/login_view.dart';
+import '../main_app/main_app_view.dart';
 
 class LoadingView extends StatelessWidget {
   static String id = '/loadingView';

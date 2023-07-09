@@ -1,6 +1,6 @@
+import 'package:betweener/features/home/receiver_page.dart';
 import 'package:betweener/providers/connectivity_provider.dart';
 import 'package:betweener/services/users_services.dart';
-import 'package:betweener/views/home/receiver_page.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,8 +1,9 @@
+import 'package:betweener/features/profile/widgets/links_list_view.dart';
+import 'package:betweener/features/profile/widgets/profile_card_widget.dart';
 import 'package:betweener/services/follow_service.dart';
-import 'package:betweener/views/profile/edit_profile_view.dart';
-import 'package:betweener/views/profile/widgets/links_list_view.dart';
-import 'package:betweener/views/profile/widgets/profile_card_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'edit_profile_view.dart';
 
 class ProfileView extends StatefulWidget {
   static const id = '/profileView';
