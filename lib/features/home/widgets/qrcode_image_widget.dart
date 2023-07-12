@@ -1,7 +1,8 @@
 import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/util/constants.dart';
-import 'package:betweener/views/home/widgets/custom_qr_border.dart';
 import 'package:flutter/material.dart';
+
+import 'custom_qr_border.dart';
 
 class QrCodeImageWidget extends StatelessWidget {
   final double scale;

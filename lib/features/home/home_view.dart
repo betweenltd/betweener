@@ -1,7 +1,8 @@
 import 'package:betweener/core/util/constants.dart';
-import 'package:betweener/views/home/widgets/circle_check_indicator_widget.dart';
-import 'package:betweener/views/home/widgets/qrcode_image_widget.dart';
-import 'package:betweener/views/home/widgets/social_cards_list_view.dart';
+import 'package:betweener/features/home/widgets/circle_check_indicator_widget.dart';
+import 'package:betweener/features/home/widgets/qrcode_image_widget.dart';
+import 'package:betweener/features/home/widgets/social_cards_list_view.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

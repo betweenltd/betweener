@@ -2,10 +2,10 @@ import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/widgets/custom_labeled_textfield_widget.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
 import 'package:betweener/services/auth_services.dart';
-import 'package:betweener/views/main_app/main_app_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../main_app/main_app_view.dart';
 import 'widgets/google_button_widget.dart';
 
 class RegisterView extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:betweener/core/util/assets.dart';
 import 'package:betweener/core/util/constants.dart';
 import 'package:betweener/core/util/shared_prefs.dart';
 import 'package:betweener/core/widgets/secondary_button_widget.dart';
-import 'package:betweener/views/loading/loading_view.dart';
+import 'package:betweener/features/loading/loading_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
