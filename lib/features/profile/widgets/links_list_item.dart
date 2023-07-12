@@ -29,9 +29,6 @@ class LinksListItem extends StatelessWidget {
         endActionPane: ActionPane(
           motion: const ScrollMotion(),
           children: [
-            const SizedBox(
-              width: 12,
-            ),
             SlidableAction(
               borderRadius: BorderRadius.circular(12),
               // An action can be bigger than the others.
@@ -52,9 +49,13 @@ class LinksListItem extends StatelessWidget {
               foregroundColor: Colors.white,
               icon: Icons.delete,
             ),
+            const SizedBox(
+              width: 32,
+            ),
           ],
         ),
         child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 38),
           padding: const EdgeInsets.all(14),
           width: double.infinity,
           decoration: BoxDecoration(

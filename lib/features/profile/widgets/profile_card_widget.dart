@@ -30,9 +30,12 @@ class ProfileCardWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CircleAvatar(
-                radius: MediaQuery.of(context).size.width / 10,
-                backgroundColor: Colors.white,
+              Hero(
+                tag: 'profilePic',
+                child: CircleAvatar(
+                  radius: MediaQuery.of(context).size.width / 10,
+                  backgroundColor: Colors.white,
+                ),
               ),
               const Spacer(),
               Column(

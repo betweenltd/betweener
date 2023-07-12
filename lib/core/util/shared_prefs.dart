@@ -6,6 +6,8 @@ class SharedPrefsController {
   final String _onBoardingKey = 'onBoarding';
   SharedPreferences? _prefs;
 
+  SharedPrefsController._internal();
+
   static final SharedPrefsController _instance =
       SharedPrefsController._internal();
 
@@ -18,8 +20,6 @@ class SharedPrefsController {
       await init();
     }
   }
-
-  SharedPrefsController._internal();
 
   Future<void> init() async {
     _prefs = await SharedPreferences.getInstance();

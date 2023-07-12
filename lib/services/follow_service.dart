@@ -16,10 +16,11 @@ class FollowServices {
         HttpHeaders.authorizationHeader:
             await SharedPrefsController().getValueFor('token'),
       });
-
       if (response.statusCode == 200) {
+        print(response.body);
+
         FollowersModel followers = followersModelFromJson(response.body);
-        return followers.count;
+        return followers.followersCount;
       }
     } catch (e) {
       print('follow Service: $e');

@@ -1,12 +1,13 @@
 import 'package:betweener/core/util/constants.dart';
 import 'package:betweener/features/home/home_view.dart';
-import 'package:betweener/features/home/receive_view.dart';
 import 'package:betweener/features/main_app/widgets/custom_floating_nav_bar.dart';
 import 'package:betweener/features/profile/profile_view.dart';
+import 'package:betweener/features/scan_qr/scan_qr_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../profile/links/add_link_view.dart';
+import '../recieve/receive_view.dart';
 
 class MainAppView extends StatefulWidget {
   static String id = '/mainAppView';
@@ -57,16 +58,32 @@ class _MainAppViewState extends State<MainAppView> {
             ? const Text(
                 'Profile',
               )
-            : null,
-        centerTitle: true,
+            : _currentIndex == 1
+                ? const Text(
+                    'Receive',
+                  )
+                : _currentIndex == 0
+                    ? const Text(
+                        'Betweener',
+                      )
+                    : null,
+        centerTitle: _currentIndex == 0 ? false : true,
         actions: [
-          if (_currentIndex == 1) ...[
+          if (_currentIndex == 0) ...[
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.search,
+                color: kPrimaryColor,
+                size: 32,
+              ),
+            ),
             IconButton(
               onPressed: () {
-                Navigator.pushNamed(context, ReceiveView.id);
+                Navigator.pushNamed(context, ScanQrView.id);
               },
               icon: const Icon(
-                Icons.emergency_share,
+                Icons.qr_code,
                 color: kPrimaryColor,
                 size: 32,
               ),
@@ -74,7 +91,7 @@ class _MainAppViewState extends State<MainAppView> {
           ]
         ],
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: kScaffoldColor,
       ),
       body: screensList[_currentIndex],
       extendBody: true,

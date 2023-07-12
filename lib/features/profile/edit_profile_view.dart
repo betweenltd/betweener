@@ -27,9 +27,12 @@ class EditProfileView extends StatelessWidget {
         padding: const EdgeInsets.all(48.0),
         child: Column(
           children: [
-            CircleAvatar(
-              backgroundColor: kPrimaryColor,
-              radius: size.width / 4,
+            Hero(
+              tag: 'profilePic',
+              child: CircleAvatar(
+                backgroundColor: kPrimaryColor,
+                radius: size.width / 4,
+              ),
             ),
             const SizedBox(
               height: 24,
