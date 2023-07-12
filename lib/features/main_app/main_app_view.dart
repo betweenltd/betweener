@@ -1,12 +1,13 @@
 import 'package:betweener/core/util/constants.dart';
 import 'package:betweener/features/home/home_view.dart';
-import 'package:betweener/features/home/receive_view.dart';
 import 'package:betweener/features/main_app/widgets/custom_floating_nav_bar.dart';
 import 'package:betweener/features/profile/profile_view.dart';
+import 'package:betweener/features/scan_qr/scan_qr_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 import '../profile/links/add_link_view.dart';
+import '../recieve/receive_view.dart';
 
 class MainAppView extends StatefulWidget {
   static String id = '/mainAppView';

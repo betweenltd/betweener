@@ -1,16 +1,15 @@
 import 'package:betweener/core/util/shared_prefs.dart';
-import 'package:betweener/providers/connectivity_provider.dart';
-import 'package:betweener/providers/followers_provider.dart';
 import 'package:betweener/features/auth/login_view.dart';
 import 'package:betweener/features/auth/register_view.dart';
 import 'package:betweener/features/home/home_view.dart';
-import 'package:betweener/features/home/receive_view.dart';
 import 'package:betweener/features/loading/loading_view.dart';
 import 'package:betweener/features/main_app/main_app_view.dart';
 import 'package:betweener/features/onbording/onbording_view.dart';
-
 import 'package:betweener/features/profile/edit_profile_view.dart';
+import 'package:betweener/features/recieve/receive_view.dart';
 import 'package:betweener/features/scan_qr/scan_qr_view.dart';
+import 'package:betweener/providers/connectivity_provider.dart';
+import 'package:betweener/providers/followers_provider.dart';
 import 'package:betweener/providers/links_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
