@@ -52,7 +52,7 @@ class _HomeViewState extends State<HomeView>
 
     double? newSize = context.size?.height;
     if (oldSize == newSize) return;
-    print(newSize);
+
     oldSize = newSize!;
   }
 
@@ -67,9 +67,9 @@ class _HomeViewState extends State<HomeView>
           scaleTransition: _scaleTransition,
           progress: _progress,
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-          child: const Text(
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 24),
+          child: Text(
             'Hello, Ahmed!',
             style: TextStyle(
                 color: kPrimaryColor,
@@ -80,19 +80,22 @@ class _HomeViewState extends State<HomeView>
         Expanded(
           key: widgetKey,
           child: Center(
-            child: GestureDetector(
-              onTap: () {},
-              onLongPress: () {
-                setState(() => scale = scale == 1.0 ? 1.15 : 1.0);
-                _controller.forward();
-              },
-              onLongPressUp: () {
-                setState(() => scale = scale == 1.15 ? 1.0 : 1.15);
-                _controller.reverse();
-              },
-              child: QrCodeImageWidget(
-                scale: scale,
-                size: oldSize,
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: GestureDetector(
+                onTap: () {},
+                onLongPress: () {
+                  setState(() => scale = scale == 1.0 ? 1.15 : 1.0);
+                  _controller.forward();
+                },
+                onLongPressUp: () {
+                  setState(() => scale = scale == 1.15 ? 1.0 : 1.15);
+                  _controller.reverse();
+                },
+                child: QrCodeImageWidget(
+                  scale: scale,
+                  size: oldSize,
+                ),
               ),
             ),
           ),
@@ -103,11 +106,11 @@ class _HomeViewState extends State<HomeView>
           indent: 50,
           endIndent: 50,
         ),
-        SizedBox(
+        const SizedBox(
           height: 8,
         ),
         const SocialCardsListView(),
-        SizedBox(
+        const SizedBox(
           height: 100,
         )
       ],

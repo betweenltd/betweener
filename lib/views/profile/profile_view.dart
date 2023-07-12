@@ -62,10 +62,7 @@ class _ProfileViewState extends State<ProfileView> {
             ),
           ),
           const SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 38),
-              child: LinksListView(),
-            ),
+            child: LinksListView(),
           )
         ],
       ),

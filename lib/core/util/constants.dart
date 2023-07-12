@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 // ============= API CONSTS =============
 
 // const baseUrl = 'http://10.0.2.2:8000/api';
-const baseUrl = 'https://b8f6-185-132-250-127.ngrok-free.app/api';
+const baseUrl = 'https://www.osamapro.online/api';
 const registerUrl = '$baseUrl/register';
 const loginUrl = '$baseUrl/login';
 const updateUserLocationUrl = '$baseUrl/update';
 const updateUserFcm = '$baseUrl/fcm';
 const longPressShareUrl = '$baseUrl/longPressShare';
 const activeShare = '$baseUrl/activeShare';
-const followersUrl = '$baseUrl/followers';
+const followersUrl = '$baseUrl/follow';
 
 enum ActiveSharingType { sender, receiver }
 

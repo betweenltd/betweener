@@ -26,7 +26,7 @@ class CustomFloatingNavBar extends StatelessWidget {
           onTap: onTap,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-            BottomNavigationBarItem(icon: Icon(Icons.qr_code), label: ''),
+            BottomNavigationBarItem(icon: Icon(Icons.emergency_share), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: '')
           ],
         ),

@@ -31,18 +31,31 @@ class _ScanQrViewState extends State<ScanQrView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          flex: 5,
-          child: QRView(
-            key: qrKey,
-            overlay: QrScannerOverlayShape(),
-            onQRViewCreated: _onQRViewCreated,
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Scan"),
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios),
+          //replace with our own icon data.
         ),
-        Spacer()
-      ],
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+      ),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 5,
+            child: QRView(
+              key: qrKey,
+              overlay: QrScannerOverlayShape(),
+              onQRViewCreated: _onQRViewCreated,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
