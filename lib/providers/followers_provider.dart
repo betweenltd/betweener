@@ -19,8 +19,13 @@ class FollowersProvider extends ChangeNotifier {
 
     try {
       final res = await FollowServices.getFollowersCount();
-      _followersCount = res;
-      _state = FollowersProviderState.loaded;
+      if (res != null) {
+        print(res);
+        _followersCount = res;
+        _state = FollowersProviderState.loaded;
+      } else {
+        _state = FollowersProviderState.error;
+      }
     } catch (e) {
       _state = FollowersProviderState.error;
     }

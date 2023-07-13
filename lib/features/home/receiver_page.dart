@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:betweener/core/util/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../../services/active_sharin_service.dart';
@@ -30,7 +29,7 @@ class _ReceiverPageState extends State<ReceiverPage> {
 
   @override
   void initState() {
-    updatePosition(userId: 6);
+    updatePosition(userId: 8);
     // setActiveSharing(userId: 6, type: ActiveSharingType.sender);
     // myStream().listen((event) {});
     getNearestSender(5);

@@ -17,7 +17,7 @@ class LinksListView extends StatelessWidget {
     ApiResponse<List<Link>> _links =
         Provider.of<LinkProvider>(context).linkList;
     if (_links.status == Status.LOADING) {
-      return Center(child: CircularProgressIndicator());
+      return const Center(child: CircularProgressIndicator());
     }
     if (_links.status == Status.ERROR) {
       return Center(

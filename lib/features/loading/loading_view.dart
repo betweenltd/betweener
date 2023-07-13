@@ -1,4 +1,6 @@
+import 'package:betweener/core/util/shared_prefs.dart';
 import 'package:betweener/providers/followers_provider.dart';
+import 'package:betweener/services/ip_location_services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,10 +9,18 @@ import '../main_app/main_app_view.dart';
 
 class LoadingView extends StatelessWidget {
   static String id = '/loadingView';
-  const LoadingView({super.key});
+  LoadingView({super.key});
+  static final sharedPrefsController = SharedPrefsController();
+  String? userId;
+
+  updateLocation() async {
+    dynamic userId = await SharedPrefsController().getValueFor('id');
+    updatePosition(userId: int.parse(userId));
+  }
 
   @override
   Widget build(BuildContext context) {
+    updateLocation();
     return Consumer<FollowersProvider>(
       builder: (context, followerProvider, child) {
         if (followerProvider.state == FollowersProviderState.loaded) {
