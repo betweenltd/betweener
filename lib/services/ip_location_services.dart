@@ -1,7 +1,8 @@
 import 'dart:async';
+
 import 'package:betweener/services/users_services.dart';
-import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
 
 Future<String> getUserIp() async {
   var url = Uri.http('ip-api.com', 'json');
@@ -14,10 +15,10 @@ Future<String> getUserIp() async {
   return ip;
 }
 
-void updatePosition({required int userId}) async {
+Future updatePosition({required int userId}) async {
   try {
-    determinePosition().then((position) {
-      updateUserLocation(userId, position.longitude, position.latitude);
+    determinePosition().then((position) async {
+      await updateUserLocation(userId, position.longitude, position.latitude);
     });
   } catch (e) {
     print('$e test');

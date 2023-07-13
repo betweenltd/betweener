@@ -63,12 +63,12 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasData && snapshot.data == true) {
               return const OnBoardingView();
             } else {
-              return const LoadingView();
+              return LoadingView();
             }
           },
         ),
         routes: {
-          LoadingView.id: (context) => const LoadingView(),
+          LoadingView.id: (context) => LoadingView(),
           LoginView.id: (context) => LoginView(),
           RegisterView.id: (context) => RegisterView(),
           HomeView.id: (context) => const HomeView(),

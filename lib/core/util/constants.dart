@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 // ============= API CONSTS =============
 
-// const baseUrl = 'http://10.0.2.2:8000/api';
-const baseUrl = 'https://www.osamapro.online/api';
+const baseUrl = 'https://4994-213-6-136-158.ngrok-free.app/api';
+//const baseUrl = 'https://www.osamapro.online/api';
 const registerUrl = '$baseUrl/register';
 const loginUrl = '$baseUrl/login';
 const updateUserLocationUrl = '$baseUrl/update';
